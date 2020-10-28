@@ -32,10 +32,21 @@ async function createVideo(src)
 
 }
 
+
+//Autoplay policy have changed for Google chrome
+//Autoplay works fine in chrome and mozilla firefox but not in chrome due to policy changes.
 async function play(source) {
     await createVideo(source)
-    var video = document.getElementById("video");
-    video.play();       
+    var video = document.getElementById("video");     
+    var promise = video.play();
+
+    if (promise !== undefined) {
+        promise.then(_ => {
+        // Autoplay started!
+    }).catch(error => {
+        alert("Autoplay was prevented \nClick on play to start video")
+    });
+   } 
 }
 
     </script>
