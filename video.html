@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+
+  
+<script>
+    //works on Microsoft Edge and Mozilla Firefox
+    play("https://images.all-free-download.com/footage_preview/webm/horses_101.webm")    
+
+
+async function createVideo(src)
+{
+        let video = document.createElement('video')
+        video.setAttribute('controls','controls' )
+        video.setAttribute('id','video')
+         let source = document.createElement('source')
+         video.src= src
+         video.type = "video/mp4"
+         video.appendChild(source)
+    try {
+        await video.onload
+        document.body.append(video)
+    } catch(err) {
+        alert(err);
+    }
+
+}
+
+async function play(source) {
+    await createVideo(source)
+    var video = document.getElementById("video");
+    video.play();       
+}
+
+    </script>
+    
+</body>
+</html>
